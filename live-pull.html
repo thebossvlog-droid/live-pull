@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Live Tonight — Cougars vs Gooners | Cougar Crusade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fdfaf2; --surface:#ffffff; --surface2:#f7efdb;
+  --ink:#000000; --muted:#1a1a1a; --line:#e3d5ae;
+  --gold:#a87c0a; --gold-bright:#e9b949; --gold-deep:#7a5a06;
+  --dark:#14100a; --dark2:#221b0e;
+  --goon:#8c1d18; --goon-bg:#fbe9e7;
+  --win:#a87c0a; --bad:#b3261e;
+  --radius:14px; --shadow:0 10px 30px rgba(28,22,8,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,sans-serif;font-size:21px;line-height:1.6;font-weight:700;overflow-x:hidden;overscroll-behavior:none}
+button,a.btn{min-height:48px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Manrope",system-ui,sans-serif;line-height:1.12;margin:0;font-weight:900}
+h2{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:900;margin-bottom:.4em}
+h3{font-size:1.3rem;font-weight:900}
+p{margin:0 0 1em;font-weight:500}
+li{font-weight:500}
+.muted{color:var(--muted)}
+section{padding:52px 0 8px}
+.kicker{font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:1.05rem;color:#000000;margin-bottom:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:800;font-size:1.05rem;text-decoration:none;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-gold{background:var(--gold-bright);color:#000000}
+.btn-gold:hover{background:#f2cd6b}
+.btn-dark{background:var(--dark);color:#f6efdc}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--gold)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);margin-top:18px}
+.card.gold-border{border:2px solid var(--gold)}
+.hero{background:#ffffff;border-bottom:6px solid #000000;padding:34px 0 30px}
+.hero h1{font-size:clamp(2.6rem,8vw,3.8rem);font-weight:900;color:#000000;max-width:16em}
+.hero .lede{font-size:clamp(1.25rem,2.8vw,1.45rem);max-width:38em;color:#000000;font-weight:700;margin-top:16px}
+.status{background:var(--dark);color:#f6efdc;border-radius:var(--radius);padding:22px 24px;margin-top:22px;box-shadow:var(--shadow)}
+.status .live-dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:#8c1d18;margin-right:8px;vertical-align:middle}
+.status p{color:#e8dfc6;margin-bottom:0}
+.status strong{color:#ffffff}
+.stats{display:grid;gap:14px;margin-top:18px}
+@media(min-width:700px){.stats{grid-template-columns:repeat(3,1fr)}}
+.stat{background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.stat .n{font-family:"Manrope",system-ui,sans-serif;font-size:1.7rem;font-weight:900;color:#000000}
+.stat .l{font-weight:700;font-size:.92rem;color:var(--muted)}
+.night-list{margin:14px 0 0;padding-left:22px}
+.night-list li{margin-bottom:8px}
+.cougar-grid{display:grid;gap:16px;margin-top:18px}
+@media(min-width:640px){.cougar-grid{grid-template-columns:1fr 1fr}}
+.cougar-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+.cougar-card.first{border:2px solid var(--gold)}
+.cougar-card .mono{width:56px;height:56px;border-radius:50%;background:var(--gold-bright);color:#000000;font-weight:900;font-size:1.6rem;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.cougar-card .rank{font-weight:800;color:#000000;margin-bottom:2px}
+.cougar-card h3{margin-bottom:2px}
+.cougar-card .handle{font-weight:800;color:#000000}
+.note{font-size:1rem;color:var(--muted)}
+.steps{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:14px}
+.steps li{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+.steps .num{width:44px;height:44px;border-radius:50%;background:var(--gold-bright);color:#000000;font-weight:900;font-size:1.3rem;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.steps h3{margin-bottom:4px}
+.steps p{margin-bottom:0}
+.choice{text-align:left;background:#fdfaf2;color:#000000;border:3px solid transparent;border-radius:14px;padding:16px 18px;font-family:inherit;font-size:1.05rem;font-weight:700;line-height:1.45;cursor:pointer;width:100%;margin-top:10px}
+.choice:hover{border-color:var(--gold-bright)}
+.choice.picked-best{border-color:#a87c0a;background:#fdf3d7}
+.choice.picked-bad{border-color:#b3261e;background:#fbe9e7}
+.choice:disabled{cursor:default;opacity:.75}
+.feedback{margin-top:14px;font-weight:700}
+.feedback .verdict{font-size:1.3rem;font-weight:900;margin-bottom:4px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;box-shadow:var(--shadow);margin-top:18px}
+.qcard .asker{font-weight:800;color:#000000}
+.link-grid{display:grid;gap:12px;margin-top:18px}
+@media(min-width:640px){.link-grid{grid-template-columns:1fr 1fr}}
+.link-grid a{display:flex;flex-direction:column;align-items:flex-start;gap:2px;background:var(--surface);border:2px solid var(--gold);border-radius:14px;padding:16px 20px;color:#000000;text-decoration:none;font-weight:800;box-shadow:var(--shadow)}
+.link-grid a span{font-weight:600;font-size:.95rem;color:var(--muted)}
+.link-grid a:hover{background:#fdf3d7}
+footer{padding:40px 0 60px;text-align:center}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Cougar Crusade &middot; Jacob Bos &mdash; Bossvloggerson</p>
+    <h1>Live Tonight</h1>
+    <p class="lede"><strong>I&rsquo;m not live right now &mdash; but last night was big, and tonight we go again.</strong> This page pulls in what happened in the live, as it happens. Last night&rsquo;s biggest Cougars, last night&rsquo;s new questions, and how we fight tonight.</p>
+    <div class="status">
+      <p><span class="live-dot"></span><strong>Live right now: OFFLINE.</strong> Both rooms are dark &mdash; @bossvloggerson and @bossvlogger. Jacob goes live most nights. Check back tonight.</p>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://www.tiktok.com/@bossvlogger/live" target="_blank" rel="noopener">Watch Live on @bossvlogger</a>
+      <a class="btn btn-dark" href="https://www.tiktok.com/@bossvloggerson/live" target="_blank" rel="noopener">Watch Live on @bossvloggerson</a>
+    </div>
+    <p class="note" style="margin-top:16px;margin-bottom:0">If the main room is dark, Jacob is live on @bossvlogger &mdash; his backup room while @bossvloggerson is suspended.</p>
+  </div>
+</header>
+
+<main class="wrap">
+<!-- 1. LAST NIGHT -->
+<section id="lastnight">
+  <p class="kicker">Last Night &mdash; After the Show</p>
+  <h2>Last night, the Cougars showed up.</h2>
+  <p class="muted">November 26&ndash;27, 2026. The main room is still suspended, so Jacob went live on the backup room, @bossvlogger &mdash; two sessions, one long night: 12:14 AM to 3:15 AM, then 3:16 AM straight through to 9:52 AM. One Queen took both sessions, a troll picked the wrong room, and the women said the line of the night: women get better with age.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">9h 36m</div><div class="l">Live, across two sessions</div></div>
+    <div class="stat"><div class="n">43</div><div class="l">Peak viewers in the room</div></div>
+    <div class="stat"><div class="n">174,395</div><div class="l">Likes</div></div>
+    <div class="stat"><div class="n">2,564</div><div class="l">Chat messages</div></div>
+    <div class="stat"><div class="n">511</div><div class="l">Gifts</div></div>
+    <div class="stat"><div class="n">94</div><div class="l">Shares</div></div>
+  </div>
+  <div class="card gold-border">
+    <h3>Our biggest and our best</h3>
+    <ul class="night-list">
+      <li><strong>Our #1 Queen, the biggest of the night:</strong> <a href="https://www.tiktok.com/@shereenthequeen" target="_blank" rel="noopener">@shereenthequeen</a> &mdash; Shereen took both sessions, back to back, and ran the second room herself with one law for the night: ignore the trolls and have fun. The biggest, and the calmest head in the room.</li>
+      <li><strong>Ran the first room, all session:</strong> <a href="https://www.tiktok.com/@totalmess7" target="_blank" rel="noopener">@totalmess7</a> ran Session A &mdash; welcoming everyone, pushing the team joins with <a href="https://www.tiktok.com/@cheeky.peach" target="_blank" rel="noopener">@cheeky.peach</a> beside her, posting the site, and calling it like a scoreboard: cougars vs gooners, cougars won. She also kept the whole room hunting for Jacob&rsquo;s lost ring &mdash; was it in the file cabinet?</li>
+      <li><strong>New woman, welcomed all the way in:</strong> <a href="https://www.tiktok.com/@jessicascearcy77" target="_blank" rel="noopener">@jessicascearcy77</a> found the live on her For You page, stayed, played her way into the biggest, and asked the question every newcomer wants answered: where do I find the daily heart? Right here, love.</li>
+      <li><strong>The line of the night:</strong> <a href="https://www.tiktok.com/@ornella_amora" target="_blank" rel="noopener">@ornella_amora</a> led it, with <a href="https://www.tiktok.com/@natalie_hauser_scarb" target="_blank" rel="noopener">@natalie_hauser_scarb</a>, <a href="https://www.tiktok.com/@shereenthequeen" target="_blank" rel="noopener">@shereenthequeen</a> and <a href="https://www.tiktok.com/@little_miss_siggy" target="_blank" rel="noopener">@little_miss_siggy</a> carrying it: women get better with age &mdash; our value is higher. That is the whole show in one sentence.</li>
+      <li><strong>The two-hour interview:</strong> <a href="https://www.tiktok.com/@thunderbug1210" target="_blank" rel="noopener">@thunderbug1210</a> arrived around 7 AM, played her way into the biggest, and asked Jacob questions for two straight hours. Everything. The room loved every minute.</li>
+      <li><strong>Trouble, recorded:</strong> <a href="https://www.tiktok.com/@keondrae.0" target="_blank" rel="noopener">@keondrae.0</a> came in mocking Jacob and aiming a dark taunt at the room &mdash; <a href="https://www.tiktok.com/@natalie_hauser_scarb" target="_blank" rel="noopener">@natalie_hauser_scarb</a> led the shutdown, with <a href="https://www.tiktok.com/@shereenthequeen" target="_blank" rel="noopener">@shereenthequeen</a>, <a href="https://www.tiktok.com/@ornella_amora" target="_blank" rel="noopener">@ornella_amora</a> and <a href="https://www.tiktok.com/@nobodyknows24.24" target="_blank" rel="noopener">@nobodyknows24.24</a> right beside her, and he left. Three more made crude comments early in the second session and were brushed off or ignored. All four are named where they belong, on the Most Wanted wall. The Queens played right past them.</li>
+    </ul>
+    <p class="note" style="margin-bottom:0">We do not share how much anyone gave. We say who is the biggest, and who is the best &mdash; and we say thank you, properly, by name.</p>
+  </div>
+</section>
+
+<!-- 2. BIGGEST COUGARS LAST NIGHT -->
+<section id="cougars">
+  <p class="kicker">Biggest Cougars Last Night</p>
+  <h2>The biggest and the best. By name.</h2>
+  <p class="muted">These are the women who showed up biggest on November 26&ndash;27, across both sessions on the backup room, @bossvlogger. We do not share how much anyone gave &mdash; we say who is the biggest, and who is the best, in the language mature women enjoy: queens, leaders, women who look after each other.</p>
+  <div class="cougar-grid">
+    <article class="cougar-card first"><div class="mono">S</div><p class="rank">Our #1 Queen &mdash; Biggest of the night</p><h3>@shereenthequeen</h3><a class="handle" href="https://www.tiktok.com/@shereenthequeen" target="_blank" rel="noopener">@shereenthequeen</a><p>Our #1 Queen of both sessions. Shereen took the whole night, then ran the second room herself: ignore the trolls and have fun. The biggest, and the boss of the room.</p></article>
+    <article class="cougar-card"><div class="mono">M</div><p class="rank">Biggest &mdash; Second of the night</p><h3>@ms_vixxen_sixx6</h3><a class="handle" href="https://www.tiktok.com/@ms_vixxen_sixx6" target="_blank" rel="noopener">@ms_vixxen_sixx6</a><p>Second biggest of the night &mdash; a loud, loyal voice of this room, there from the first session to the last.</p></article>
+    <article class="cougar-card"><div class="mono">A</div><p class="rank">Biggest &mdash; Third of the night</p><h3>@amygram111</h3><a class="handle" href="https://www.tiktok.com/@amygram111" target="_blank" rel="noopener">@amygram111</a><p>Third biggest of the night &mdash; steady, strong, there for the team from the first minute to the last.</p></article>
+    <article class="cougar-card"><div class="mono">C</div><p class="rank">Biggest &mdash; Fourth of the night</p><h3>@cheeky.peach</h3><a class="handle" href="https://www.tiktok.com/@cheeky.peach" target="_blank" rel="noopener">@cheeky.peach</a><p>Fourth biggest of the night &mdash; and she co-pushed the team joins beside Total Mess all first session. A Queen who recruits and builds.</p></article>
+    <article class="cougar-card"><div class="mono">4</div><p class="rank">Biggest &mdash; Fifth of the night</p><h3>@4everpinkgirl</h3><a class="handle" href="https://www.tiktok.com/@4everpinkgirl" target="_blank" rel="noopener">@4everpinkgirl</a><p>Fifth biggest of the night &mdash; big, bright, and right in the fight with her sisters.</p></article>
+    <article class="cougar-card"><div class="mono">J</div><p class="rank">Biggest &mdash; Top of the night</p><h3>@janet_e_m</h3><a class="handle" href="https://www.tiktok.com/@janet_e_m" target="_blank" rel="noopener">@janet_e_m</a><p>One of the biggest of the night &mdash; new in the biggest, and already looking out for Jacob, telling him to get some sleep.</p></article>
+    <article class="cougar-card"><div class="mono">B</div><p class="rank">Biggest &mdash; Top of the night</p><h3>@beautifulthingsin</h3><a class="handle" href="https://www.tiktok.com/@beautifulthingsin" target="_blank" rel="noopener">@beautifulthingsin</a><p>One of the biggest of the night &mdash; and she asked the last question of the night: are you gonna battle before bed?</p></article>
+    <article class="cougar-card"><div class="mono">O</div><p class="rank">Biggest &mdash; Top of the night</p><h3>@ornella_amora</h3><a class="handle" href="https://www.tiktok.com/@ornella_amora" target="_blank" rel="noopener">@ornella_amora</a><p>One of the biggest of the night &mdash; she led the line of the night, women get better with age, and she helped shut the gate on the troll.</p></article>
+    <article class="cougar-card"><div class="mono">M</div><p class="rank">Biggest &mdash; Top of the night</p><h3>@maureenann60</h3><a class="handle" href="https://www.tiktok.com/@maureenann60" target="_blank" rel="noopener">@maureenann60</a><p>One of the biggest of the night &mdash; a Queen of this room, showing up big for her sisters again.</p></article>
+    <article class="cougar-card"><div class="mono">S</div><p class="rank">Biggest &mdash; Top of the night</p><h3>@sherry.king593</h3><a class="handle" href="https://www.tiktok.com/@sherry.king593" target="_blank" rel="noopener">@sherry.king593</a><p>One of the biggest of the night &mdash; steady, generous, and always standing with the team.</p></article>
+  </div>
+  <p class="note" style="margin-top:18px">Also there that night &mdash; every woman who played, tapped, cheered, and showed up. This room grows every night.</p>
+</section>
+
+<!-- 3. NEW QUESTIONS FROM LAST NIGHT -->
+<section id="questions">
+  <p class="kicker">New Questions From Last Night</p>
+  <h2>Twelve new questions. Asked by the Cougars themselves.</h2>
+  <p><strong>My loves, the Queens are asking you.</strong> @totalmess7, @jessicascearcy77, @alicialiana34, @therealseska, @equinelady56, @giacreamer and @beautifulthingsin were in the room last night, and they asked what the room was really asking &mdash; plus five true-or-false questions about that very show. Answer them, like you mean it.</p>
+  <p style="font-weight:800" id="liveCount">You have answered 0 of 12 questions.</p>
+  <div id="liveList"></div>
+</section>
+
+<!-- 4. HOW WE FIGHT TONIGHT -->
+<section id="fight">
+  <p class="kicker">How We Fight Tonight</p>
+  <h2>How we fought last night &mdash; on the backup room.</h2>
+  <p class="muted">The main room is suspended, so the fight moved to @bossvlogger &mdash; and the Cougars moved with it. This is how the room ran, and how we fight tonight.</p>
+  <ol class="steps">
+    <li><span class="num">1</span><div><h3>A Queen runs the room</h3><p>Total Mess ran the first session &mdash; welcomes, team joins, the site posts &mdash; and Shereen ran the second. When a Queen runs the room, Jacob can be Jacob, and nobody waits to be welcomed.</p></div></li>
+    <li><span class="num">2</span><div><h3>Ignore the trolls and have fun</h3><p>That was Shereen&rsquo;s law all morning. A troll gets one answer from the room, together &mdash; then the fun rolls right over him. Attention is the prize; we do not hand it out.</p></div></li>
+    <li><span class="num">3</span><div><h3>Defend together, by name</h3><p>When the troll came for Jacob, Natalie led, and Shereen, Ornella and Nobody Knows stood right beside her. Four voices, one line, done. That is how this room defends its own.</p></div></li>
+    <li><span class="num">4</span><div><h3>Push the team joins together</h3><p>Total Mess and Cheeky Peach pushed the team joins side by side in the first session &mdash; every new woman got asked, by name, more than once, with love. A woman who joins the team plays bigger the same night.</p></div></li>
+    <li><span class="num">5</span><div><h3>Say the line, lift the room</h3><p>Right after the fight, Ornella led the room in the line of the night: women get better with age, our value is higher. When the room says who it is, out loud, together &mdash; no troll can touch it.</p></div></li>
+  </ol>
+  <p class="note" style="margin-top:18px">From last night on <a href="https://www.tiktok.com/@bossvlogger/live" target="_blank" rel="noopener">@bossvlogger</a> &mdash; the backup room, while @bossvloggerson is suspended.</p>
+</section>
+
+
+<!-- 5. FIND ME EVERYWHERE -->
+<section id="links">
+  <p class="kicker">Find Me Everywhere</p>
+  <h2>Everywhere I am. Come find me.</h2>
+  <p class="muted">TikTok, Facebook, Discord, the podcast &mdash; it is all here. Follow, join, listen, play.</p>
+  <div class="link-grid">
+    <a href="https://www.tiktok.com/@bossvlogger/live" target="_blank" rel="noopener">Watch Live &mdash; @bossvlogger <span>The backup room, live now while the main room is dark</span></a>
+    <a href="https://www.tiktok.com/@bossvloggerson/live" target="_blank" rel="noopener">Watch Live &mdash; @bossvloggerson <span>The main room, most nights</span></a>
+    <a href="https://www.facebook.com/profile.php?id=61575210544606" target="_blank" rel="noopener">Facebook &mdash; Bossvloggerson <span>The verified page</span></a>
+    <a href="https://www.facebook.com/groups/2184005375247404/" target="_blank" rel="noopener">CougarClub <span>The private Facebook group</span></a>
+    <a href="https://discord.gg/TWBqBH4nZ" target="_blank" rel="noopener">Discord &mdash; Cougar Crusade <span>LIVE alerts, three times a day</span></a>
+    <a href="https://podcasters.spotify.com/pod/show/cougarconfessions" target="_blank" rel="noopener">Spotify &mdash; Cougar Confessions <span>149 episodes</span></a>
+    <a href="https://podcasts.apple.com/us/podcast/cougarconfessions/id1471424149" target="_blank" rel="noopener">Apple Podcasts &mdash; Cougar Confessions <span>Listen on Apple</span></a>
+    <a href="https://pca.st/40zlzrl1" target="_blank" rel="noopener">Pocket Casts &mdash; Cougar Confessions <span>Listen on Pocket Casts</span></a>
+    <a href="https://www.cougarcrusade.com/all-episodes" target="_blank" rel="noopener">All Episodes <span>Every Cougar Confessions episode, newest first</span></a>
+    <a href="https://www.cougarcrusade.com/join-cougar-crusade" target="_blank" rel="noopener">Join Free &mdash; Cougar Crusade <span>LIVE alerts and the Last Night summary</span></a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesvO63fujxMxLRn8CLE3gmRzkCL42ip7K8KyMF3b_UyB9BqA/viewform" target="_blank" rel="noopener">Tell Me About You <span>So Jacob gets to know you</span></a>
+    <a href="https://thebossvlog-droid.github.io/cougars-vs-gooners/" target="_blank" rel="noopener">Play Cougars vs Gooners <span>The full game</span></a>
+    <a href="https://thebossvlog-droid.github.io/warriors/" target="_blank" rel="noopener">Warriors Training <span>Learn to protect the Crusade</span></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p><strong>Play with me. Win with me. &mdash; Jacob</strong></p>
+  <p class="muted"><a href="https://www.cougarcrusade.com/" style="color:#000000">Cougar Crusade</a> &middot; <a href="https://www.cougarcrusade.com/all-episodes" style="color:#000000">Cougar Confessions &mdash; 149 episodes</a></p>
+</footer>
+
+<script>
+var LIVE_Q=[{"a": "totalmess7", "h": "@totalmess7", "q": "@totalmess7 asked it in front of the whole room: Jacob, why wouldn't you do a documentary? You used to say you wanted to. What do you tell her?", "c": ["That question is the show, queen — every night here is a documentary being written live, by the women in the chat. The story is happening; the room is the film crew.", "Because there is nothing worth filming here.", "Documentaries are for other people — not this room."], "b": 0, "f": "That is @totalmess7 — she ran the first room all night, and she knows Jacob's story better than almost anyone. She asks because she believes the story deserves telling."}, {"a": "jessicascearcy77", "h": "@jessicascearcy77", "q": "@jessicascearcy77 is brand new — she found the live on her For You page and asked it honestly: where would I find the daily heart? What do you tell her?", "c": ["Welcome in, queen — the daily heart is right where the team is: show up, tap in with the Cougars, and your heart lands with the family. Ask any Queen in the chat and she will walk you to it, step by step.", "New women have to figure that out alone.", "There is no daily heart for newcomers."], "b": 0, "f": "That is @jessicascearcy77 — first night, and she played her way straight into the biggest. Every Queen here started by asking exactly that question."}, {"a": "alicialiana34", "h": "@alicialiana34", "q": "@alicialiana34 asked it like a friend: what's your favorite music, Jacob? What do you tell her?", "c": ["The honest answer, queen — the music that fills a room and makes women want to stay, dance, and laugh. In this room, the soundtrack is whatever keeps the Cougars smiling.", "Jacob never listens to music.", "Music does not matter in a live."], "b": 0, "f": "That is @alicialiana34 — she kept the room laughing all first session, and she asked because this room runs on music and mood."}, {"a": "therealseska", "h": "@therealseska", "q": "@therealseska asked it with a smile: what did you think of the BookTok boyfriend move I sent you? What do you tell her?", "c": ["That move got the whole room's attention, queen — Seska sends the good stuff, and Jacob noticed. BookTok energy belongs in this room: playful, bold, and all in fun.", "Pretend it was never sent.", "BookTok has no place here."], "b": 0, "f": "That is @therealseska — she sent the move, then checked in live to see if it landed. It landed."}, {"a": "equinelady56", "h": "@equinelady56", "q": "@equinelady56 asked the question the whole room is carrying: did you get your account back? What do you tell her?", "c": ["Not yet, queen — and that is exactly why this backup room matters. The Cougars moved with Jacob, the show never stopped, and the fight for the main account goes on, together.", "Yes — everything is back to normal.", "The account does not matter at all."], "b": 0, "f": "That is @equinelady56 — asking for every woman who followed Jacob from the main room to the backup room and stayed."}, {"a": "giacreamer", "h": "@giacreamer", "q": "@giacreamer asked it straight: what is it that you're building? What do you tell her?", "c": ["A room, a game, and a family, queen — Cougars vs Gooners, the nightly stories, and a place where mature women play together and look after each other. You are standing in it while it is being built.", "Nothing — this is just a random live.", "Only Jacob knows, and nobody else gets told."], "b": 0, "f": "That is @giacreamer — level 42 on the main account, and she asked because she can see something being built here."}, {"a": "beautifulthingsin", "h": "@beautifulthingsin", "q": "@beautifulthingsin asked it at the end of a very long night: are you gonna battle before bed? What do you tell her?", "c": ["You know it, queen — one more battle with the Cougars beside him is how Jacob ends a night. Stock up, stay close, and be ready when the call comes.", "No — the night just stops, no warning.", "Battles are not part of this room."], "b": 0, "f": "That is @beautifulthingsin — one of the biggest of the night, still asking for one more battle at the end of nine and a half hours."}, {"a": "totalmess7", "h": "@totalmess7", "q": "True or false, about tonight's show: Total Mess ran the room in the first session tonight.", "c": ["True — welcomes, team joins, the site posts, the lost-ring hunt: Session A was Total Mess's room, and she ran it like a boss.", "False — nobody ran the room in the first session.", "False — the first session never happened."], "b": 0, "f": "True! @totalmess7 ran Session A from the first welcome to the last goodnight — that is what a Warrior does."}, {"a": "shereenthequeen", "h": "@shereenthequeen", "q": "True or false, about tonight's show: Shereen told the room: ignore the trolls and have fun.", "c": ["True — that was Shereen's law for the second session, and the room lived by it all morning.", "False — Shereen told everyone to argue with the trolls.", "False — Shereen never said a word all night."], "b": 0, "f": "True! @shereenthequeen — #1 Queen of both sessions — set the tone: ignore the trolls and have fun."}, {"a": "natalie_hauser_scarb", "h": "@natalie_hauser_scarb", "q": "True or false, about tonight's show: Natalie shut down the troll who came for Jacob.", "c": ["True — Natalie led the shutdown, with Shereen, Ornella and Nobody Knows right beside her, and the troll left.", "False — the troll ran the room all night.", "False — nobody answered the troll at all."], "b": 0, "f": "True! @natalie_hauser_scarb led the defence — that is a Queen protecting her room."}, {"a": "thunderbug1210", "h": "@thunderbug1210", "q": "True or false, about tonight's show: Thunderbug asked Jacob questions for two hours and gifted her way into the top 10.", "c": ["True — she arrived around 7 AM, played into the biggest, and asked Jacob dozens of questions for two straight hours.", "False — Thunderbug never spoke in the chat.", "False — Thunderbug left after five minutes."], "b": 0, "f": "True! @thunderbug1210 — two hours of questions, and a place in the biggest. That is how a newcomer becomes a Queen."}, {"a": "bossvlogger", "h": "@bossvlogger", "q": "True or false, about tonight's show: Dan, Ivan and Shanda finally showed up tonight.", "c": ["False — not tonight. Ten lives checked now, and the three of them still have not appeared in the chat or the gifts.", "True — all three were in the room all night.", "True — they ran the room."], "b": 0, "f": "False — Dan, Ivan and Shanda were not in either session. The room keeps watching for them."}]
+var liveAnswered=0;
+var liveList=document.getElementById("liveList");
+LIVE_Q.forEach(function(item, idx){
+  var card=document.createElement("div");
+  card.className="qcard";
+  var who=document.createElement("p");
+  who.className="asker";
+  who.innerHTML='<a href="https://www.tiktok.com/'+item.h+'" target="_blank" rel="noopener" style="font-weight:800;color:#000000">'+item.h+'</a> asks:';
+  card.appendChild(who);
+  var q=document.createElement("h3");
+  q.textContent="Question "+(idx+1)+" of 5: "+item.q;
+  card.appendChild(q);
+  var box=document.createElement("div");
+  var fb=document.createElement("div");
+  fb.className="feedback";
+  fb.style.display="none";
+  var verdict=document.createElement("div");
+  verdict.className="verdict";
+  var note=document.createElement("p");
+  fb.appendChild(verdict);
+  fb.appendChild(note);
+  var shuffled=item.c.map(function(choice, ci){ return {t:choice, best:(ci===item.b)}; });
+  shuffled.sort(function(){ return Math.random()-0.5; });
+  shuffled.forEach(function(choice){
+    var btn=document.createElement("button");
+    btn.className="choice";
+    btn.type="button";
+    btn.textContent=choice.t;
+    btn.onclick=function(){
+      var all=box.children;
+      for(var j=0;j<all.length;j++){ all[j].disabled=true; }
+      if(choice.best){ btn.classList.add("picked-best"); verdict.textContent=item.a+" loved that answer."; }
+      else { btn.classList.add("picked-bad"); verdict.textContent="Not quite \u2014 "+item.a+" would say it differently."; }
+      note.textContent=item.f;
+      fb.style.display="block";
+      liveAnswered++;
+      document.getElementById("liveCount").textContent="You have answered "+liveAnswered+" of 12 questions.";
+    };
+    box.appendChild(btn);
+  });
+  card.appendChild(box);
+  card.appendChild(fb);
+  liveList.appendChild(card);
+});
+</script>
+</body>
+</html>
